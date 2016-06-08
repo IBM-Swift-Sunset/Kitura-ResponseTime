@@ -19,14 +19,30 @@ import Foundation
 
 class ResponseTime: RouterMiddleware {
     
-    let startTime = NSDate()
+    var startTime = NSDate()
+    let precision: Int
+    let headerName: String
+    let includeSuffix: Bool
+    
+    init(precision: Int = 3, headerName: String = "X-Response-Time", includeSuffix: Bool = true) {
+        self.precision = precision
+        self.headerName = headerName
+        self.includeSuffix = includeSuffix
+    }
     
     func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
+        startTime = NSDate()
         let previousOnResponseEnd = response.onResponseEnd ?? nil
         response.onResponseEnd = { [unowned self, unowned response] in
             let timeElapsed = self.startTime.timeIntervalSinceNow
-            let milisecondsElapsed = Int(abs(timeElapsed * 1000))
-            response.headers["X-Response-Time"] = String(milisecondsElapsed)
+            let formatter = NSNumberFormatter()
+            formatter.maximumFractionDigits = self.precision
+            let milisecondOutput = formatter.string(from: NSNumber(value: abs(timeElapsed) * 1000))
+            if let milisecondOutput = milisecondOutput {
+                let value = self.includeSuffix ? milisecondOutput + "ms" : milisecondOutput
+                response.headers[self.headerName] = value
+            }
+            
             if let previousOnResponseEnd = previousOnResponseEnd {
                 previousOnResponseEnd()
             }
