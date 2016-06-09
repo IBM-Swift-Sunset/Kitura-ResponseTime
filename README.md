@@ -9,20 +9,25 @@ This module tracks the response time for HTTP requests and sends the time back i
 Add this package to your `Package.swift`.
 
 ## Use
-`import Kitura`
-`import ResponseTime`
+```
+import Kitura
+import ResponseTime
 
-`let router = Router()`
-`router.all(ResponseTime())`
+let router = Router()
+router.all(ResponseTime())
+```
 
-### Options
-`ResponseTime(precision:, headerName:, includeSuffix:)`
+## Options
+### `ResponseTime(precision:, headerName:, includeSuffix:)`
 
 **precision**
+
 The number of digits to include after the decimal point, defaults to `3` (ex: `4.143ms`).
 
 **headerName**
+
 The name of the header to set, defaults to `X-Response-Time`.
 
 **includeSuffix**
+
 Whether to include the `ms` suffix, defaults to `true`.
