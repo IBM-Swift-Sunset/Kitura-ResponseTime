@@ -17,31 +17,35 @@
 import Kitura
 import Foundation
 
-class ResponseTime: RouterMiddleware {
+public class ResponseTime: RouterMiddleware {
     
     let precision: Int
     let headerName: String
     let includeSuffix: Bool
     
-    init(precision: Int = 3, headerName: String = "X-Response-Time", includeSuffix: Bool = true) {
+    public init(precision: Int = 3, headerName: String = "X-Response-Time", includeSuffix: Bool = true) {
         self.precision = precision
         self.headerName = headerName
         self.includeSuffix = includeSuffix
     }
-    
-    func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
+
+    public func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
         let startTime = NSDate()
-        var previousOnResponseEnd = {}
-        previousOnResponseEnd = response.setOnEndInvoked() { [unowned self, unowned response] in
+        var previousOnEndInvoked = {}
+        previousOnEndInvoked = response.setOnEndInvoked() { [unowned self, unowned response] in
             let timeElapsed = startTime.timeIntervalSinceNow
             let formatter = NSNumberFormatter()
             formatter.maximumFractionDigits = self.precision
+#if os(Linux)
+            let milisecondOutput = formatter.stringFromNumber(NSNumber(value: abs(timeElapsed) * 1000))
+#else
             let milisecondOutput = formatter.string(from: NSNumber(value: abs(timeElapsed) * 1000))
+#endif
             if let milisecondOutput = milisecondOutput {
                 let value = self.includeSuffix ? milisecondOutput + "ms" : milisecondOutput
                 response.headers[self.headerName] = value
             }
-            previousOnResponseEnd()
+            previousOnEndInvoked()
         }
         next()
     }
