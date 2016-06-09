@@ -21,6 +21,7 @@ router.all(ResponseTime())
 ### ResponseTime(precision:, headerName:, includeSuffix:)
 
 **precision**
+
 The number of digits to include after the decimal point, defaults to `3` (ex: `4.143ms`).
 
 **headerName**
