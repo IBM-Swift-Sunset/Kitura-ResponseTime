@@ -2,9 +2,7 @@
 
 Middleware for [Kitura](https://github.com/IBM-Swift/Kitura).
 
-This module tracks the response time for HTTP requests and sends the time back in the response header.
-
-Response time is defined as the elapsed time from when the request is processed by this middleware to the time when the response is sent out in miliseconds.
+This module tracks the response time for HTTP requests and sends the time back in the response header. Response time is defined as the elapsed time from when the request is processed by this middleware to the time when the response is sent out in miliseconds.
 
 ## Installation
 
