@@ -18,7 +18,7 @@ router.all(ResponseTime())
 ```
 
 ## Options
-### `ResponseTime(precision:, headerName:, includeSuffix:)`
+### ResponseTime(precision:, headerName:, includeSuffix:)
 
 **precision**
 
