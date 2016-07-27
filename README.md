@@ -6,7 +6,7 @@ This module tracks the response time for HTTP requests and sends the time back i
 
 ## Installation
 
-Add this package to your `Package.swift`.
+Add this repo to your package dependencies in your `Package.swift`.
 
 ## Use
 ```
