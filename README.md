@@ -14,7 +14,7 @@ import Kitura
 import ResponseTime
 
 let router = Router()
-router.all(ResponseTime())
+router.all(middleware: ResponseTime())
 ```
 
 ## Options
