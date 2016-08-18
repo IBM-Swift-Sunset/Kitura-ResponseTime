@@ -29,7 +29,7 @@ public class ResponseTime: RouterMiddleware {
         self.includeSuffix = includeSuffix
     }
 
-    public func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
+    public func handle(request: RouterRequest, response: RouterResponse, next: @escaping () -> Void) throws {
         let startTime = NSDate()
         var previousOnEndInvoked = {}
         previousOnEndInvoked = response.setOnEndInvoked() { [unowned self, unowned response] in
