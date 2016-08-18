@@ -34,17 +34,9 @@ public class ResponseTime: RouterMiddleware {
         var previousOnEndInvoked = {}
         previousOnEndInvoked = response.setOnEndInvoked() { [unowned self, unowned response] in
             let timeElapsed = startTime.timeIntervalSinceNow
-#if os(Linux)
-            let formatter = NSNumberFormatter()
-#else
             let formatter = NumberFormatter()
-#endif
             formatter.maximumFractionDigits = self.precision
-#if os(Linux)
-            let milisecondOutput = formatter.stringFromNumber(NSNumber(value: abs(timeElapsed) * 1000))
-#else
             let milisecondOutput = formatter.string(from: NSNumber(value: abs(timeElapsed) * 1000))
-#endif
             if let milisecondOutput = milisecondOutput {
                 let value = self.includeSuffix ? milisecondOutput + "ms" : milisecondOutput
                 response.headers[self.headerName] = value
