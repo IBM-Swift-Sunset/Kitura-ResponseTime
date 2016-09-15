@@ -17,6 +17,11 @@ let router = Router()
 router.all(middleware: ResponseTime())
 ```
 
+**Note:** In order to get correct numbers it is important to place this middleware as early as
+possible in the list of handlers and middleware of your application. Any time spent
+in handlers or middleware that run before this middleware is invoked will not be
+counted.
+
 ## Options
 ### ResponseTime(precision:, headerName:, includeSuffix:)
 
