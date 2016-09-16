@@ -23,6 +23,7 @@ in handlers or middleware that run before this middleware is invoked will not be
 counted.
 
 ## Options
+
 ### ResponseTime(precision:, headerName:, includeSuffix:)
 
 **precision**
