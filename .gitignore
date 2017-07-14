@@ -1,6 +1,7 @@
 .build
 build
 .vagrant
+Package.resolved
 Packages
 *.pkg
 ResponseTime.xcodeproj
