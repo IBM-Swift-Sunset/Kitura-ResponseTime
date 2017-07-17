@@ -1,4 +1,7 @@
 # Kitura-ResponseTime
+![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
+![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
+![Apache 2](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat)
 
 Middleware for [Kitura](https://github.com/IBM-Swift/Kitura).
 
@@ -8,7 +11,7 @@ This module tracks the response time for HTTP requests and sends the time back i
 
 Add this repo to your package dependencies in your `Package.swift`.
 
-## Use
+## Usage
 ```
 import Kitura
 import ResponseTime
@@ -24,16 +27,19 @@ counted.
 
 ## Options
 
-### ResponseTime(precision:, headerName:, includeSuffix:)
+### `ResponseTime(precision:, headerName:, includeSuffix:)`
 
 **precision**
 
-The number of digits to include after the decimal point, defaults to `3` (ex: `4.143ms`).
+The number of digits to include after the decimal point. Defaults to `3` (ex: `4.143ms`).
 
 **headerName**
 
-The name of the header to set, defaults to `X-Response-Time`.
+The name of the header to set. Defaults to `X-Response-Time`.
 
 **includeSuffix**
 
-Whether to include the `ms` suffix, defaults to `true`.
+Whether to include the `ms` suffix. Defaults to `true`.
+
+## License
+Apache 2.0

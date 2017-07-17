@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
 
@@ -21,6 +24,12 @@
           ResponseTime Docs
         </a>
          (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
       </p>
     
         <p class="header-col header-col--secondary">
@@ -64,7 +73,6 @@
               </div>
             <p>A Kitura &lsquo;RouterMiddleware&rsquo; that reports the time (in milliseconds) that a request took in
 one of the HTTP response headers (X-Response-Time by default).</p>
-
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     In order to get correct numbers it is important to place this middleware as early as
@@ -84,9 +92,9 @@ one of the HTTP response headers (X-Response-Time by default).</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC12ResponseTime12ResponseTimecFT9precisionSi10headerNameSS13includeSuffixSb_S0_"></a>
+                    <a name="/s:12ResponseTimeAACABSi9precision_SS10headerNameSb13includeSuffixtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(precision:headerName:includeSuffix:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC12ResponseTime12ResponseTimecFT9precisionSi10headerNameSS13includeSuffixSb_S0_">init(precision:headerName:includeSuffix:)</a>
+                    <a class="token" href="#/s:12ResponseTimeAACABSi9precision_SS10headerNameSb13includeSuffixtcfc">init(precision:headerName:includeSuffix:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -95,27 +103,6 @@ one of the HTTP response headers (X-Response-Time by default).</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Initialize a <code>ResponseTime</code> instance</p>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter precision: The precision of the reported response time. Defaults to
-                  three digits to the right of the decimal point.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter headerName: The name of the HTTP response header to use to report the
-                   response time. Defaults to <q>X-Response-Time</q>.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter includeSuffix: If <code>true</code> a suffix of <q>ms</q> will be added to the reported
-                      response time.
-
-</div>
 
                       </div>
                       <div class="declaration">
@@ -126,61 +113,15 @@ one of the HTTP response headers (X-Response-Time by default).</p>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>precision</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The precision of the reported response time. Defaults to three digits to the right of the decimal point.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>headerName</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The name of the HTTP response header to use to report the response time. Defaults to “X-Response-Time”.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>includeSuffix</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>If <code>true</code> a suffix of “ms” will be added to the reported response time.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC12ResponseTime12ResponseTime6handleFzT7requestC6Kitura13RouterRequest8responseCS1_14RouterResponse4nextFT_T__T_"></a>
+                    <a name="/s:12ResponseTimeAAC6handley6Kitura13RouterRequestC7request_AD0eA0C8responseyyc4nexttKF"></a>
                     <a name="//apple_ref/swift/Method/handle(request:response:next:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC12ResponseTime12ResponseTime6handleFzT7requestC6Kitura13RouterRequest8responseCS1_14RouterResponse4nextFT_T__T_">handle(request:response:next:)</a>
+                    <a class="token" href="#/s:12ResponseTimeAAC6handley6Kitura13RouterRequestC7request_AD0eA0C8responseyyc4nexttKF">handle(request:response:next:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -191,27 +132,6 @@ one of the HTTP response headers (X-Response-Time by default).</p>
                         <p>Process an incoming request and inject the <code>ResponseTime</code> <code>Kitura.RouterResponse.onEndInvoked</code>
 lifecycle handler.</p>
 
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter request: The <code>RouterRequest</code> object used to get information
-                about the HTTP request.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter response: The <code>RouterResponse</code> object used to respond to the
-                  HTTP request
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter next: The closure to invoke to enable the Router to check for
-             other handlers or middleware to work with this request.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -220,52 +140,6 @@ lifecycle handler.</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">handle</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">RouterRequest</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">RouterResponse</span><span class="p">,</span> <span class="nv">next</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>request</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The <code>RouterRequest</code> object used to get information about the HTTP request.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>response</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The <code>RouterResponse</code> object used to respond to the HTTP request</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>next</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The closure to invoke to enable the Router to check for other handlers or middleware to work with this request.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -278,8 +152,8 @@ lifecycle handler.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2016-09-22)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2017-07-14)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
